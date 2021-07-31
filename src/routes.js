@@ -1,32 +1,31 @@
 import React from 'react';
-import { View } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer'
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {Ionicons} from '@expo/vector-icons';
 
-import { Ionicons } from '@expo/vector-icons'; 
+import Home from './pages/Home';
+import MyLinks from './pages/MyLinks';
+;
 
-import { Home } from './pages/Home';
-import { MyLinks } from './pages/MyLinks';
-  
 const Drawer = createDrawerNavigator();
 
-function Routes(){
+function Routes () {
     return(
         <Drawer.Navigator
             drawerContentOptions={{
                 activeBackgroundColor: '#2ccdb9',
-                activeTintColor:'#fff',
+                activeTintColor: '#fff',
                 marginTop: 16,
                 labelStyle: {
-                    fontSize: 19
+                    fontSize: 20
                 }
             }}
         >
-            <Drawer.Screen 
+            <Drawer.Screen
                 name="Home"
                 component={Home}
                 options={{
                     title: 'Encurtar Link',
-                    drawerIcon: ({ focused, size, color}) => (
+                    drawerIcon: ({ focused, size, color }) => (
                         <Ionicons 
                             name={focused ? "cube" : "cube-outline"}
                             color={color}
@@ -36,19 +35,19 @@ function Routes(){
                 }}
             />
 
-            <Drawer.Screen 
-                name="MyLinks"
+            <Drawer.Screen
+                name="MyLink"
                 component={MyLinks}
                 options={{
-                    title: 'Encuntar Link',
-                    drawerIcon: ({ focused, size, color}) => (
+                    title: 'Meus Links',
+                    drawerIcon: ({ focused, size, color }) => (
                         <Ionicons 
                             name={focused ? "stats-chart" : "stats-chart-outline"}
                             color={color}
                             size={size}
-                            />
-                            )
-                        }}
+                        />
+                    )
+                }}
             />
         </Drawer.Navigator>
     )
