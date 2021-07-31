@@ -14,3 +14,12 @@ padding-left: 10px;
 padding-right: 20px;
 font-size: 18px;
 `;
+
+export const ActionContainer = styled.TouchableOpacity`
+background-color: #FF5555;
+border-radius: 7px;
+width: 15%;
+justify-content: center;
+align-items: center;
+margin: 7px 10px;
+`;

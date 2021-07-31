@@ -11,6 +11,7 @@ ContainerInput,  BoxIcon, Input, ButtonLink, ButtonLinkText} from './styles';
 import { ModalLink } from '../../components/ModalLink';
 
 import api from '../../services/api';
+import {saveLink} from '../../utils/storedLinks';
 
   
 export default function Home(){
@@ -27,6 +28,8 @@ export default function Home(){
                 long_url: input
             })
             setData(response.data);
+
+            saveLink('links', response.data)
 
             setModalVisible(true);
             setLoading(false);
