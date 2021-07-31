@@ -5,16 +5,16 @@ import { ModalContainer, Container, Header, LinkArea, Title, LongUrl, ShortLinkA
 import { Feather } from '@expo/vector-icons';
 import  ClipBoard  from 'expo-clipboard';
 
-export function ModalLink({ onClose }){
+export function ModalLink({ onClose, data }){
     function copyLink(){
-        ClipBoard.setString('https://google.com');
+        ClipBoard.setString(data.link);
         alert('Copiado')
     }
 
     async function handleShare(){
         try {
             const result = await Share.share({
-                message: 'Link: https://google.com'
+                message: `Link: ${data.link}`
             });
 
             if(result.action === Share.sharedAction){
@@ -50,13 +50,13 @@ export function ModalLink({ onClose }){
                 <LinkArea>
                     <Title>Short Link</Title>
                         <LongUrl numberOfLines={1}>
-                            https://google.com
+                            {data.long_url}
                         </LongUrl>
                     <ShortLinkArea
                         activeOpacity={1}
                         onPress={copyLink}
                     >
-                        <ShortLinkUrl numberOfLines={1}>https://bit.ly/asdas</ShortLinkUrl>
+                        <ShortLinkUrl numberOfLines={1}>{data.link}</ShortLinkUrl>
                         <TouchableOpacity onPress={copyLink}>
                             <Feather name="copy" color="#fff" size={25} />
                         </TouchableOpacity>
